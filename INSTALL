@@ -1,0 +1,16 @@
+// Go ympäristön pystyttäminen. (muuta $WORKSPACE kohde haluamaksesi)
+
+export $WORKSPACE = SomeFolderYouHavePermissionsIn
+hg clone -r release https://code.google.com/p/go $WORKSPACE/go
+cd $WORKSPACE/go/src && ./make.bash
+mkdir -p $WORKSPACE/src
+mkdir -p $WORKSPACE/bin
+mkdir -p $WORKSPACE/pkg
+export GOPATH=$WORKSPACE
+export PATH=$PATH:$WORKSPACE/go/bin
+
+// Kopioi ohjelman koodi alihakemistoon $WORKSPACE/src alle.
+// Tämän jälkeen:
+
+go build
+./treeception
